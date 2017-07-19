@@ -3,13 +3,13 @@
 
 ## Endpoints
 `/questions`
-> methods: GET, POST 
+> method(s): GET, POST 
 
 `/questions/:qID`
-> methods: GET
+> method(s): GET
 
 `/questions/:qID/answers`
-> methods: POST
+> method(s): POST
 
 `/questions/:qID/answers/:aID`
 > method(s): PUT, DELETE
