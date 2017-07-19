@@ -1,0 +1,30 @@
+{
+  "name": "stacky",
+  "version": "0.0.1",
+  "description": "An Api for a stackoverflow clone",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamolojede/stacky.git"
+  },
+  "keywords": [
+    "API",
+    "NodeJS",
+    "Express",
+    "JS",
+    "QA"
+  ],
+  "author": "William I. Olojede",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/williamolojede/stacky/issues"
+  },
+  "homepage": "https://github.com/williamolojede/stacky#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
