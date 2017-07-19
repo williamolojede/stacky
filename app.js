@@ -1,5 +1,6 @@
 const express = require('express');
 const jsonParser = require('body-parser').json;
+const mongoose = require('mongoose');
 const logger = require('morgan');
 const routes = require('./routes');
 
@@ -8,6 +9,12 @@ const app = express();
 // MIDDLEWARES
 app.use(jsonParser());
 app.use(logger('dev'));
+
+// MONGODB
+mongoose.connect('mongodb://localhost:27017/stacky');
+const db = mongoose.connection;
+db.on('error', err => console.error('connection error:', err));
+db.once('open', () => console.log('db connection successful'));
 
 // ROUTES
 app.use('/questions', routes);
