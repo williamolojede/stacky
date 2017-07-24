@@ -16,6 +16,17 @@ const db = mongoose.connection;
 db.on('error', err => console.error('connection error:', err));
 db.once('open', () => console.log('db connection successful'));
 
+// CORS SETTING
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  if(req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'PUT,POST,DELETE');
+    res.status(200).json({});
+  }
+  next();
+});
+
 // ROUTES
 app.use('/questions', routes);
 

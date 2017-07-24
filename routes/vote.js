@@ -6,6 +6,7 @@ const router = express.Router();
 const validateURL = (req, res, next) => {
   const { voteDir } = req;
   if (voteDir === 'up' || voteDir === 'down') {
+    req.vote = voteDir;
     next();
   } else {
     const err = new Error('Not Found');
@@ -17,23 +18,11 @@ const validateURL = (req, res, next) => {
 // POST /questions/:qID/answers/:aID/vote-up
 // POST /questions/:qID/answers/:aID/vote-down
 // Vote on a specific answer
-router.post('/', validateURL, (req, res) => {
-  const { voteDir } = req;
-  if (voteDir === 'up') {
-    res.json({
-      response: 'Your sent a up vote req',
-      questionId: req.questionId,
-      answerId: req.answerId,
-      body: req.body,
-    });
-  } else {
-    res.json({
-      response: 'Your sent a down vote req',
-      questionId: req.questionId,
-      answerId: req.answerId,
-      body: req.body,
-    });
-  }
+router.post('/', validateURL, (req, res, next) => {
+  req.answer.vote(req.vote, (err, question) => {
+    if (err) return next(err);
+    res.json(question);
+  });
 });
 
 module.exports = router;

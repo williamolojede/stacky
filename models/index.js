@@ -20,14 +20,14 @@ const AnswerSchema = new Schema({
   votes: { type: Number, default: 0 },
 });
 
-AnswerSchema.methods('update', function (updates, callback) {
+AnswerSchema.method('update', function (updates, callback) {
   Object.assign(this, updates, { updatedAt: new Date() });
   this.parent().save(callback);
 });
 
-AnswerSchema.methods('vote', function (vote, callback) {
-  if (vote === 'up') this.vote += 1;
-  else this.vote -= 1;
+AnswerSchema.method('vote', function (vote, callback) {
+  if (vote === 'up') this.votes += 1;
+  else this.votes -= 1;
   this.parent().save(callback);
 });
 
@@ -44,4 +44,4 @@ QuestionSchema.pre('save', function (next) {
 
 const Question = mongoose.model('Question', QuestionSchema);
 
-module.exports.Question = Question;
+module.exports = Question;
