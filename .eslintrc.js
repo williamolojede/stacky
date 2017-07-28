@@ -5,7 +5,7 @@ const config = {
   },
   "rules": {
     "no-shadow": "off",
-    "no-multi-spaces": "off"
+    "no-multi-spaces": ["error", { exceptions: { "VariableDeclarator": true } }]
   }
 };
 
