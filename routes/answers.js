@@ -1,5 +1,5 @@
 const express = require('express');
-const vote = require('./vote');
+const vote    = require('./vote');
 
 const router = express.Router();
 

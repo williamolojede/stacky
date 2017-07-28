@@ -5,6 +5,7 @@ const config = {
   },
   "rules": {
     "no-shadow": "off",
+    "no-multi-spaces": "off"
   }
 };
 
